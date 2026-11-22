@@ -1,0 +1,67 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "input_object.png"
+    }
+  },
+  "2": {
+    "class_type": "Hy3DDelightModelLoader",
+    "inputs": {
+      "model_name": "hy3d_delight.safetensors"
+    }
+  },
+  "3": {
+    "class_type": "Hy3DDelight",
+    "inputs": {
+      "image": ["1", 0],
+      "model": ["2", 0]
+    }
+  },
+  "4": {
+    "class_type": "Hy3DModelLoader",
+    "inputs": {
+      "model_name": "hunyuan3d-dit-v2.safetensors"
+    }
+  },
+  "5": {
+    "class_type": "Hy3DShapeSampler",
+    "inputs": {
+      "guidance_scale": 5.5,
+      "image": ["3", 0],
+      "model": ["4", 0],
+      "octree_resolution": 256,
+      "seed": 42,
+      "steps": 30
+    }
+  },
+  "6": {
+    "class_type": "Hy3DOffloadToCPU",
+    "inputs": {
+      "model": ["4", 0],
+      "shape_mesh": ["5", 0]
+    }
+  },
+  "7": {
+    "class_type": "Hy3DPaintModelLoader",
+    "inputs": {
+      "model_name": "hy3d_paint_model.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "Hy3DTextureBPT",
+    "inputs": {
+      "image": ["3", 0],
+      "paint_model": ["7", 0],
+      "shape_mesh": ["6", 0],
+      "texture_size": 1024,
+      "uv_unwrap": "xatlas"
+    }
+  },
+  "9": {
+    "class_type": "SaveImageWebsocket",
+    "inputs": {
+      "images": ["8", 0]
+    }
+  }
+}

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarambh (आरम्भ) — Gamma Hive AI Enterprise Suite</title>
+    <link rel="stylesheet" href="/static/css/style.css?v=5.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+    <!-- Master Tablet Device Wrapper (Matching User Visual Reference) -->
+    <div class="device-wrapper">
+
+        <!-- =========================================================
+             1. HEADER & GLOBAL CONTROLS
+             ========================================================= -->
+        <header class="header-bar">
+            
+            <!-- Left: Brand Identity -->
+            <div class="brand-section">
+                <div class="brand-title-wrap">
+                    <div class="brand-logo-icon">⚡</div>
+                    <div>
+                        <h1 class="brand-title">GAMMA HIVE</h1>
+                    </div>
+                </div>
+                <p class="brand-subtitle">Project Aarambh AI Enterprise Suite — 10 Master Studios | 40 Sub-Categories</p>
+            </div>
+
+            <!-- Center: Navigation Tabs -->
+            <nav class="nav-links">
+                <button class="nav-link active" data-view="studios">
+                    <span>🏛️</span> 10 Master Studios
+                </button>
+                <button class="nav-link" data-view="workbench">
+                    <span>🌐</span> Inbuilt Workbench
+                </button>
+                <button class="nav-link" data-view="about">
+                    <span>ℹ️</span> Architecture
+                </button>
+            </nav>
+
+            <!-- Right: Status Control Center (Red Circled in User Image) -->
+            <div class="top-controls">
+                
+                <!-- Compute Profile Toggle Switch (Colab 15GB Baseline vs Kaggle 30GB Ultra) -->
+                <div class="vram-profile-toggle-wrap" id="vramProfileToggleWrap" title="Switch between 15GB Colab Baseline & 30GB Kaggle Dual-T4 Ultra SOTA Catalog">
+                    <span class="vram-toggle-label">COMPUTE:</span>
+                    <div class="vram-toggle-switch">
+                        <button type="button" class="vram-toggle-btn" id="btnProfileColab" data-profile="colab" title="Colab Safe Baseline: 15 GB VRAM (Lightweight Models)">
+                            <span>⚡</span> Colab 15GB
+                        </button>
+                        <button type="button" class="vram-toggle-btn active" id="btnProfileKaggle" data-profile="kaggle" title="Kaggle Ultra Enterprise: Dual Tesla T4 (30 GB VRAM · Heavyweight SOTA Models)">
+                            <span>🏆</span> Kaggle 30GB Ultra
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Google Colab Connectivity Check Widget -->
+                <div class="connectivity-card">
+                    <div class="status-indicator-dot checking" id="colabStatusDot"></div>
+                    <div class="connectivity-info">
+                        <div class="connectivity-title">
+                            Google Colab Connectivity
+                            <span id="btnEditGateway" style="cursor: pointer; color: #64748b; font-size: 0.7rem;" title="Configure Gateway URL">⚙️</span>
+                        </div>
+                        <div class="connectivity-details" id="colabDetails">Checking remote GPU...</div>
+                    </div>
+                    <button class="btn-check-colab" id="btnCheckColab" title="Pings remote Colab GPU without refreshing UI">
+                        <span class="check-icon">⚡</span> Check Colab
+                    </button>
+                </div>
+
+                <!-- Global Error & Diagnostic Console Trigger -->
+                <button class="btn-header-logs" id="btnHeaderLogs" title="Open real-time error & diagnostic console">
+                    <span>📋 Error Logs</span>
+                    <span class="error-badge-count" id="headerErrorBadge">0</span>
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- =========================================================
+             2. MASTER VIEWS
+             ========================================================= -->
+
+        <!-- VIEW 1: 10 MASTER STUDIOS GRID (2x5 Matching User Visual) -->
+        <main class="view-panel active" id="view-studios">
+            <div class="studios-grid">
+
+                <!-- 01 Visual & Generative Media -->
+                <div class="studio-card" data-studio-id="1">
+                    <div class="card-top">
+                        <div class="card-icon-box">🎨</div>
+                        <span class="card-badge badge-active">Active</span>
+                    </div>
+                    <div>
+                        <h3 class="card-title">01 Visual & Generative Media</h3>
+                        <ul class="card-bullets">
+                            <li>SDXL & Realistic Vision v5.1</li>
+                            <li>LTX-Video 2.5 DiT Engine</li>
+                            <li>Hunyuan3D-2 Textured Mesh</li>
+                            <li>AnimateDiff & LivePortrait</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-action-text">Launch Studio →</span>
+                        <span style="font-size: 0.7rem; color: #94a3b8;">Tier 1 (T4)</span>
+                    </div>
+                </div>
+
+                <!-- 02 Audio, Voice & Music -->
+                <div class="studio-card" data-studio-id="2">
+                    <div class="card-top">
+                        <div class="card-icon-box">🎧</div>
+                        <span class="card-badge badge-ready">Ready</span>
+                    </div>
+                    <div>
+                        <h3 class="card-title">02 Audio, Voice & Music</h3>
+                        <ul class="card-bullets">
+                            <li>F5-TTS Voice Cloning</li>
+                            <li>Whisper-Large-v3-Turbo</li>
+                            <li>Meta MusicGen Scoring</li>
+                            <li>Demucs v4 Stem Separation</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-action-text">Launch Studio →</span>
+                        <span style="font-size: 0.7rem; color: #94a3b8;">Tier 1 (T4)</span>
+                    </div>
+                </div>
+
+                <!-- 03 HiveMind Cognitive Lab -->
+                <div class="studio-card" data-studio-id="3">
+                    <div class="card-top">
+                        <div class="card-icon-box">🧠</div>
+                        <span class="card-badge badge-active">Active</span>
+                    </div>
+                    <div>
+                        <h3 class="card-title">03 HiveMind Cognitive Lab</h3>
+                        <ul class="card-bullets">
+                            <li>DeepSeek-R1 (14B &lt;think&gt;)</li>
+                            <li>Qwen 2.5 / Meta Llama 3.1</li>
+                            <li>Neural Hybrid RAG (BGE-M3)</li>
+                            <li>SeamlessM4T Translation</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-action-text">Launch Studio →</span>
+                        <span style="font-size: 0.7rem; color: #94a3b8;">Tier 1 (T4)</span>
+                    </div>
+                </div>
+
+                <!-- 04 Software Engineering -->
+                <div class="studio-card" data-studio-id="4">
+                    <div class="card-top">
+                        <div class="card-icon-box">💻</div>
+                        <span class="card-badge badge-ready">Ready</span>
+                    </div>
+                    <div>
+                        <h3 class="card-title">04 Software Engineering</h3>
+                        <ul class="card-bullets">
+                            <li>Qwen 2.5 Coder 14B AWQ</li>
+                            <li>bolt.diy Full-Stack Engine</li>
+                            <li>Kotlin Android & Flutter</li>
+                            <li>Defog SQLCoder Architect</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-action-text">Launch Studio →</span>
+                        <span style="font-size: 0.7rem; color: #94a3b8;">Tier 1 (T4)</span>
+                    </div>
+                </div>
+
+                <!-- 05 Autonomous Agents & Physical AI -->
+                <div class="studio-card" data-studio-id="5">
+                    <div class="card-top">
+                        <div class="card-icon-box">🤖</div>
+                        <span class="card-badge badge-active">Active</span>
+                    </div>
+                    <div>
+                        <h3 class="card-title">05 Autonomous Agents & Physical AI</h3>
+                        <ul class="card-bullets">
+                            <li>Microsoft AutoGen Swarm</li>
+                            <li>UI-TARS 7B Computer-Use</li>
+                            <li>LangGraph & CrewAI Orchestrator</li>
+                            <li>HuggingFace LeRobot Control</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-action-text">Launch Studio →</span>
+                        <span style="font-size: 0.7rem; color: #94a3b8;">Tier 1 (T4)</span>
+                    </div>
+                </div>
+
+                <!-- 06 Cyber Security & Threat Intelligence -->
+                <div class="studio-card" data-studio-id="6">
+                    <div class="card-top">
+                        <div class="card-icon-box">🛡️</div>
+                        <span class="card-badge badge-active">Active</span>
+                    </div>
+                    <div>
+                        <h3 class="card-title">06 Cyber Security & Threat Intel</h3>
+                        <ul class="card-bullets">
+                            <li>Semgrep AI SAST Engine</li>
+                            <li>Deepfake Forensic Scanner</li>
+                            <li>VulnDetect LLM Analysis</li>
+                            <li>PenTestGPT Local Auditing</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-action-text">Launch Studio →</span>
+                        <span style="font-size: 0.7rem; color: #94a3b8;">Tier 1 (T4)</span>
+                    </div>
+                </div>
+
+                <!-- 07 Enterprise Finance & Ledger -->
+                <div class="studio-card" data-studio-id="7">
+                    <div class="card-top">
+                        <div class="card-icon-box">📈</div>
+                        <span class="card-badge badge-ready">Ready</span>
+                    </div>
+                    <div>
+                        <h3 class="card-title">07 Enterprise Finance & Ledger</h3>
+                        <ul class="card-bullets">
+                            <li>Columbia FinGPT Models</li>
+                            <li>Microsoft Qlib Quantitative</li>
+                            <li>PyG Graph Fraud Detection</li>
+                            <li>Legal-BERT Contract Discovery</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-action-text">Launch Studio →</span>
+                        <span style="font-size: 0.7rem; color: #94a3b8;">Tier 1 (T4)</span>
+                    </div>
+                </div>
+
+                <!-- 08 Vision & Document OCR -->
+                <div class="studio-card" data-studio-id="8">
+                    <div class="card-top">
+                        <div class="card-icon-box">📄</div>
+                        <span class="card-badge badge-active">Active</span>
+                    </div>
+                    <div>
+                        <h3 class="card-title">08 Vision & Document OCR</h3>
+                        <ul class="card-bullets">
+                            <li>MinerU PDF Extraction Kit</li>
+                            <li>Surya OCR Line Recognition</li>
+                            <li>Microsoft Florence-2 VLM</li>
+                            <li>Meta Nougat Math Parser</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-action-text">Launch Studio →</span>
+                        <span style="font-size: 0.7rem; color: #94a3b8;">Tier 1 (T4)</span>
+                    </div>
+                </div>
+
+                <!-- 09 Deep Science & Discovery -->
+                <div class="studio-card" data-studio-id="9">
+                    <div class="card-top">
+                        <div class="card-icon-box">🧬</div>
+                        <span class="card-badge badge-ready">Ready</span>
+                    </div>
+                    <div>
+                        <h3 class="card-title">09 Deep Science & Discovery</h3>
+                        <ul class="card-bullets">
+                            <li>Meta ESMFold Protein Folding</li>
+                            <li>AlphaFold 2 Structural Biology</li>
+                            <li>Med-SAM Radiology Diagnostics</li>
+                            <li>DeepMind GraphCast Climate</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-action-text">Launch Studio →</span>
+                        <span style="font-size: 0.7rem; color: #94a3b8;">Tier 1 (T4)</span>
+                    </div>
+                </div>
+
+                <!-- 10 Model Foundry & Hyper Runtime -->
+                <div class="studio-card" data-studio-id="10">
+                    <div class="card-top">
+                        <div class="card-icon-box">⚙️</div>
+                        <span class="card-badge badge-active">Active</span>
+                    </div>
+                    <div>
+                        <h3 class="card-title">10 Model Foundry & Hyper Runtime</h3>
+                        <ul class="card-bullets">
+                            <li>Unsloth 5x Fast LoRA Engine</li>
+                            <li>llama.cpp GGUF Quantizer</li>
+                            <li>vLLM High-Throughput Serve</li>
+                            <li>AutoAWQ 4-Bit Compression</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-action-text">Launch Studio →</span>
+                        <span style="font-size: 0.7rem; color: #94a3b8;">Tier 1 (T4)</span>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- VIEW 2: STUDIO GENERATOR WORKSPACE (AI MODEL CONTROLS & PREVIEW) -->
+        <section class="view-panel" id="view-workspace">
+            <div class="workspace-wrapper">
+                
+                <!-- Workspace Top Control Bar -->
+                <div class="workspace-top-bar">
+                    <div class="workspace-title-box">
+                        <button class="btn-back-studios" id="btnBackStudios">
+                            ← Back to 10 Studios
+                        </button>
+                        <h2 id="workspaceStudioTitle" style="font-size: 1.15rem; font-weight: 800; color: #0f172a;">Studio Workspace</h2>
+                    </div>
+
+                    <!-- Inline Section Diagnostics Bar (REQUIRED ON EVERY PAGE & SUB-SECTION) -->
+                    <div class="section-diagnostics-bar">
+                        <span class="diag-status-text">🟢 Google Colab: Connected (Tesla T4)</span>
+                        <button class="btn-section-error-log">
+                            🔍 View Error Log
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sub-Sections / Sub-Categories Navigation Bar -->
+                <div class="workspace-subcategories-bar" id="workspaceSubcategoriesBar"></div>
+
+                <!-- Active Sub-Category Info Banner -->
+                <div class="subcat-info-banner" id="subcatInfoBanner">
+                    <div class="subcat-info-left">
+                        <div class="subcat-title-row">
+                            <span class="subcat-id-badge" id="subcatActiveId">1.1</span>
+                            <h3 class="subcat-active-title" id="subcatActiveTitle">Text-to-Image</h3>
+                        </div>
+                        <p class="subcat-active-summary" id="subcatActiveSummary">Photorealistic and stylized high-resolution still synthesis with precision control.</p>
+                    </div>
+                    <div class="subcat-info-right">
+                        <span class="subcat-compute-badge" id="subcatComputeBadge">⚡ 12–24 GB VRAM · Production Active</span>
+                    </div>
+                </div>
+
+                <!-- 2-Column Studio Layout -->
+                <div class="workspace-grid">
+                    
+                    <!-- Left Column: Controls -->
+                    <div class="control-card">
+                        <div class="card-heading">
+                            <span>⚙️</span> Generator Controls & Hyper-Parameters
+                        </div>
+
+                        <!-- Model Engine Selector (Populated with relevant models for active subcategory) -->
+                        <div class="form-group">
+                            <label class="form-label">
+                                Active AI Model Engine
+                                <span style="font-weight: 500; color: #059669;" id="subcatModelCountBadge">4 Models Available</span>
+                            </label>
+                            <select class="form-select" id="selectModelEngine"></select>
+                        </div>
+
+                        <!-- Prompt Input -->
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span id="promptLabelTitle">Positive Prompt</span>
+                                <span style="font-weight: 500; color: #06b6d4;" id="promptLabelGuide">CLIP / T5 Guided</span>
+                            </label>
+                            <textarea class="form-textarea" id="promptInput" placeholder="Describe the asset or synthesis goal..."></textarea>
+                        </div>
+
+                        <!-- Dynamic Context-Aware Parameter Controls (Image, Video, 3D, Audio, Code, etc.) -->
+                        <div id="dynamicParamsContainer">
+                            <!-- Injected by JavaScript based on active subcategory -->
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div style="display: flex; gap: 10px; margin-top: 8px;">
+                            <button class="btn-generate" id="btnGenerateMaster" style="flex: 1;">
+                                <span>⚡</span> Run Model Pipeline
+                            </button>
+                            <button class="btn-check-colab" id="btnFlushVram" title="Flush GPU VRAM to 0 MB (/free)" style="padding: 0 16px;">
+                                🧹 Free VRAM
+                            </button>
+                        </div>
+
+                    </div>
+                                🧹 Free VRAM
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Live Output & Preview Window -->
+                    <div class="preview-card">
+                        <div class="card-heading" style="justify-content: space-between;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span>📺</span> Live Generation & Preview
+                            </div>
+                            <span id="previewStatus" style="font-size: 0.72rem; font-weight: 600; color: #64748b;">Ready</span>
+                        </div>
+
+                        <!-- Canvas Display Area -->
+                        <div class="preview-display-box" id="previewDisplayBox">
+                            <div class="preview-placeholder-text">
+                                <p style="font-size: 2.2rem; margin-bottom: 8px;">🎨</p>
+                                <p>No active generation yet.</p>
+                                <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 4px;">Click "Run Model Pipeline" to stream live outputs from Google Colab.</p>
+                            </div>
+                        </div>
+
+                        <!-- Telemetry Meta -->
+                        <div style="background: #f8fafc; border-radius: 12px; padding: 10px 14px; border: 1px solid #e2e8f0; font-size: 0.72rem; color: #64748b; display: flex; justify-content: space-between;">
+                            <span>WebSocket Stream: <strong>SaveImageWebsocket (out[8:])</strong></span>
+                            <span>Engine: <strong>ComfyUI Remote Gateway</strong></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- VIEW 3: INBUILT CLOUD & BROWSER WORKBENCH (ZERO REFRESH PERSISTENCE) -->
+        <section class="view-panel" id="view-workbench">
+            <div class="workbench-container">
+                
+                <!-- Universal Cloud GPU & MCP Engine Hub (Zero Browser Tabs · Headless Cloud Compute) -->
+                <div class="workbench-demo-tabs-bar">
+                    <button type="button" class="demo-tab-btn active" id="tabMcpKaggle" data-mcp="kaggle">
+                        <span>🏆</span> Kaggle GPU MCP (Zero-Tab · 30h/wk Free 2x T4)
+                    </button>
+                    <button type="button" class="demo-tab-btn" id="tabMcpColab" data-mcp="colab">
+                        <span>⚡</span> Google Colab MCP (T4 Compute Bridge)
+                    </button>
+                    <button type="button" class="demo-tab-btn" id="tabMcpHf" data-mcp="hf">
+                        <span>🤗</span> Hugging Face ZeroGPU MCP (Serverless A100)
+                    </button>
+                </div>
+
+                <!-- =========================================================
+                     1. KAGGLE GPU MCP GATEWAY (100% ZERO-BROWSER · 2x T4 GPU)
+                     ========================================================= -->
+                <div id="panelMcpKaggle" class="mcp-provider-card" style="display: flex; flex-direction: column; gap: 14px;">
+                    <div class="ext-deck-topbar">
+                        <div class="ext-status-chip" id="kaggleStatusChip">
+                            <span class="tunnel-pulse-dot standby" id="kagglePulseDot"></span>
+                            <div>
+                                <div style="font-size: 0.68rem; color: #64748b; font-weight: 600; text-transform: uppercase;">Kaggle MCP Engine</div>
+                                <span id="kaggleStatusText" style="color: #d97706;">CHECKING CREDENTIALS...</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <span class="tag-badge">⚡ 2x Tesla T4 (30 GB VRAM)</span>
+                            <span class="tag-badge">⏱️ 30 Hours/Week 100% Free</span>
+                            <span class="tag-badge" style="background: #ecfdf5; color: #065f46; border-color: #a7f3d0;">🔒 0 Browser Tabs Needed</span>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 20px;">
+                        <h4 style="margin: 0 0 8px 0; color: #0f172a; font-size: 0.9rem;">🔑 Kaggle API Credentials Setup (100% Headless Cloud GPU)</h4>
+                        <p style="font-size: 0.76rem; color: #64748b; margin-bottom: 12px; line-height: 1.5;">
+                            Kaggle का आधिकारिक API टोकन दर्ज करें। इसके बाद Aarambh सीधे बैकग्राउंड में आपके 2x Tesla T4 GPU पर कोड और ComfyUI चलाएगा — <strong>बिना किसी ब्राउज़र टैब, बिना किसी विंडो, और बिना किसी मैन्युअल 'Connect' क्लिक के!</strong>
+                        </p>
+                        <div style="display: grid; grid-template-columns: 1fr 1.6fr auto auto; gap: 10px; align-items: flex-end;">
+                            <div>
+                                <label class="form-label">Kaggle Username</label>
+                                <input type="text" class="form-input" id="inputKaggleUser" placeholder="e.g. your_username" style="width: 100%;">
+                            </div>
+                            <div>
+                                <label class="form-label">Kaggle API Key</label>
+                                <input type="password" class="form-input" id="inputKaggleKey" placeholder="e.g. 8f723xxxxxxxxxxxxxxxxxxx" style="width: 100%;">
+                            </div>
+                            <button type="button" class="btn-check-colab" id="btnSaveKaggleMcp" style="height: 38px;">
+                                💾 Connect MCP
+                            </button>
+                            <button type="button" class="stream-action-btn" id="btnTestKaggleMcp" style="height: 38px;">
+                                ⚡ Ping 2x T4
+                            </button>
+                        </div>
+                        <div style="margin-top: 10px; font-size: 0.72rem; color: #64748b; display: flex; justify-content: space-between;">
+                            <span>💡 टोकन पाने के लिए: <a href="https://www.kaggle.com/settings/api" target="_blank" style="color: #2563eb; font-weight: 600;">Kaggle Settings ↗</a> में जाकर <strong>'Generate New Token'</strong> पर क्लिक करें।</span>
+                            <span style="font-family: var(--font-mono);">~/.kaggle/kaggle.json</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     2. GOOGLE COLAB MCP BRIDGE (TESLA T4 COMPUTE & SENTINEL)
+                     ========================================================= -->
+                <div id="panelMcpColab" class="mcp-provider-card" style="display: none; flex-direction: column; gap: 14px;">
+                    <div class="ext-deck-topbar">
+                        <div class="ext-status-chip" id="colabMcpStatusChip">
+                            <span class="tunnel-pulse-dot standby" id="colabMcpPulseDot"></span>
+                            <div>
+                                <div style="font-size: 0.68rem; color: #64748b; font-weight: 600; text-transform: uppercase;">Colab MCP Bridge</div>
+                                <span id="colabMcpStatusText" style="color: #d97706;">STANDBY (Awaiting Gateway)</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <span class="tag-badge">⚡ Tesla T4 (15.3 GB VRAM)</span>
+                            <span class="tag-badge">🛡️ Anti-Disconnect Sentinel</span>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 20px;">
+                        <h4 style="margin: 0 0 8px 0; color: #0f172a; font-size: 0.9rem;">📡 Google Colab Gateway Bridge (Remote Worker)</h4>
+                        <p style="font-size: 0.76rem; color: #64748b; margin-bottom: 12px; line-height: 1.5;">
+                            Google Colab में अपना T4 GPU कनेक्ट करने के बाद अपना Cloudflare या Ngrok टनल लिंक यहाँ दर्ज करें। यह MCP ब्रिज कोड निष्पादन और लाइव VRAM टेलीमेट्री को Aarambh में लाता है:
+                        </p>
+                        <div style="display: flex; gap: 10px; align-items: flex-end;">
+                            <div style="flex: 1;">
+                                <label class="form-label">Colab Gateway URL</label>
+                                <input type="text" class="form-input" id="inputColabMcpUrl" placeholder="https://xxxx.trycloudflare.com or wss://..." style="width: 100%;">
+                            </div>
+                            <button type="button" class="btn-check-colab" id="btnSaveColabMcp" style="height: 38px;">
+                                💾 Link Gateway
+                            </button>
+                            <button type="button" class="stream-action-btn" id="btnTestColabMcp" style="height: 38px;">
+                                ⚡ Ping Worker
+                            </button>
+                            <button type="button" class="stream-action-btn" id="btnToggleColabMcpCode" style="height: 38px;">
+                                📋 1-Click Code
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Collapsible 1-Click Colab Code Panel -->
+                    <div id="colabMcpCodePanel" style="display: none; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 16px 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <strong style="font-size: 0.86rem; color: #0f172a;">📋 1-Click Startup Code (Run once in Colab to establish Bridge)</strong>
+                            <button type="button" class="stream-action-btn active" id="btnCopyColabMcpCode">
+                                <span>📄</span> Copy Script
+                            </button>
+                        </div>
+                        <div class="colab-code-box" id="colabMcpScriptBox" style="max-height: 140px;">Loading script...</div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     3. HUGGING FACE ZEROGPU MCP (SERVERLESS A100 / T4)
+                     ========================================================= -->
+                <div id="panelMcpHf" class="mcp-provider-card" style="display: none; flex-direction: column; gap: 14px;">
+                    <div class="ext-deck-topbar">
+                        <div class="ext-status-chip" id="hfMcpStatusChip">
+                            <span class="tunnel-pulse-dot standby" id="hfMcpPulseDot"></span>
+                            <div>
+                                <div style="font-size: 0.68rem; color: #64748b; font-weight: 600; text-transform: uppercase;">Hugging Face ZeroGPU</div>
+                                <span id="hfMcpStatusText" style="color: #d97706;">API TOKEN NEEDED</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <span class="tag-badge">🤗 Serverless ZeroGPU</span>
+                            <span class="tag-badge">⚡ NVIDIA A100 / T4 Auto-Scale</span>
+                            <span class="tag-badge" style="background: #ecfdf5; color: #065f46; border-color: #a7f3d0;">🔒 0 Notebooks Needed</span>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 20px;">
+                        <h4 style="margin: 0 0 8px 0; color: #0f172a; font-size: 0.9rem;">🔑 Hugging Face Hub Access Token (Serverless Inference)</h4>
+                        <p style="font-size: 0.76rem; color: #64748b; margin-bottom: 12px; line-height: 1.5;">
+                            Hugging Face Access Token दर्ज करें। यह FLUX, Stable Diffusion, Whisper और Llama जैसे मॉडल्स को बिना किसी नोटबुक के सीधे सर्वरलेस GPU पर चलाता है:
+                        </p>
+                        <div style="display: flex; gap: 10px; align-items: flex-end;">
+                            <div style="flex: 1;">
+                                <label class="form-label">HF Access Token</label>
+                                <input type="password" class="form-input" id="inputHfToken" placeholder="hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="width: 100%;">
+                            </div>
+                            <button type="button" class="btn-check-colab" id="btnSaveHfMcp" style="height: 38px;">
+                                💾 Connect HF
+                            </button>
+                            <button type="button" class="stream-action-btn" id="btnTestHfMcp" style="height: 38px;">
+                                ⚡ Test ZeroGPU
+                            </button>
+                        </div>
+                        <div style="margin-top: 10px; font-size: 0.72rem; color: #64748b;">
+                            💡 टोकन पाने के लिए: <a href="https://huggingface.co/settings/tokens" target="_blank" style="color: #2563eb; font-weight: 600;">Hugging Face Settings ↗</a> में जाकर 'Create new token' (Read or Write) चुनें।
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     4. LIVE MCP EXECUTION TERMINAL & REMOTE OUTPUT STREAM
+                     ========================================================= -->
+                <div class="mcp-console-wrapper" style="margin-top: 12px;">
+                    <div class="mcp-console-header">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 1.1rem;">🖥️</span>
+                            <strong style="font-size: 0.88rem; color: #0f172a;">Live Cloud GPU Execution Terminal & Remote Output Stream</strong>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <button type="button" class="stream-action-btn" id="btnClearMcpTerminal" title="Clear console">
+                                <span>🗑</span> Clear
+                            </button>
+                            <button type="button" class="stream-action-btn" id="btnCopyMcpTerminal" title="Copy console text">
+                                <span>📋</span> Copy
+                            </button>
+                            <button type="button" class="stream-action-btn active" id="btnProbeActiveMcp" title="Probe active hardware">
+                                <span>🚀</span> Hardware Probe
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mcp-terminal-screen" id="mcpTerminalScreen">
+                        <div class="mcp-terminal-content" id="mcpTerminalLogs">[11:00:00] [Aarambh MCP Hub] Initializing Unified Remote Cloud Compute Engine...
+[11:00:00] [Aarambh MCP Hub] Active Engine: Kaggle 2x Tesla T4 GPU (30 GB VRAM · Zero Browser Tabs)
+[11:00:00] [Aarambh MCP Hub] Alternative Engines: Google Colab MCP Bridge | Hugging Face ZeroGPU
+[11:00:00] [Aarambh MCP Hub] Ready. Select an engine above or click 'Hardware Probe' to test connection.</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- VIEW 4: ARCHITECTURE & ABOUT -->
+        <section class="view-panel" id="view-about">
+            <div class="control-card" style="max-width: 900px; margin: 0 auto;">
+                <div class="card-heading">
+                    <span>🏛️</span> Project Aarambh & Gamma Hive Architecture Specifications
+                </div>
+                <p style="font-size: 0.85rem; line-height: 1.6; color: #475569;">
+                    <strong>Aarambh (आरम्भ)</strong> is an enterprise multi-modal AI studio environment engineered to bridge client-side orchestration with remote cloud compute engines (Google Colab Tesla T4 testbed and local high-VRAM dual-GPU workstations).
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px;">
+                    <div style="background: #f8fafc; padding: 14px; border-radius: 14px; border: 1px solid #e2e8f0;">
+                        <h4 style="font-size: 0.82rem; font-weight: 700; color: #0f172a; margin-bottom: 6px;">⚡ Zero-Refresh Session Shield</h4>
+                        <p style="font-size: 0.74rem; color: #64748b;">
+                            The Inbuilt Workbench maintains an unbroken DOM presence. Navigating between 10 studios, generator controls, or error logs never unmounts or refreshes your Google Colab session.
+                        </p>
+                    </div>
+                    <div style="background: #f8fafc; padding: 14px; border-radius: 14px; border: 1px solid #e2e8f0;">
+                        <h4 style="font-size: 0.82rem; font-weight: 700; color: #0f172a; margin-bottom: 6px;">🧹 Dynamic Zero-OOM VRAM Purge</h4>
+                        <p style="font-size: 0.74rem; color: #64748b;">
+                            Automatic <code>POST /free</code> execution upon model switching flushes GPU memory back to 0 MB baseline, ensuring large generative models never collide or crash.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- =========================================================
+         3. UNIVERSAL SLIDE-OUT ERROR & DIAGNOSTIC DRAWER
+         ========================================================= -->
+    <div class="error-drawer-backdrop" id="errorDrawerBackdrop"></div>
+    <aside class="error-drawer" id="errorDrawer">
+        
+        <div class="drawer-header">
+            <div class="drawer-title">
+                <span>📋</span> Universal Error & Diagnostics Console
+            </div>
+            <div class="drawer-actions">
+                <button class="btn-drawer-action" id="btnClearLogs" title="Clear all logs">🗑 Clear</button>
+                <button class="btn-drawer-action" id="btnCopyLogs" title="Copy to clipboard">📋 Copy</button>
+                <button class="btn-drawer-close" id="btnCloseLogs" title="Close drawer">✖</button>
+            </div>
+        </div>
+
+        <div class="drawer-filter-bar">
+            <button class="filter-tab active" data-filter="ALL">All Logs</button>
+            <button class="filter-tab" data-filter="ERRORS">Errors Only</button>
+            <button class="filter-tab" data-filter="WARNINGS">Warnings</button>
+            <button class="filter-tab" data-filter="SYSTEM">System/Core</button>
+        </div>
+
+        <div class="drawer-logs-list" id="drawerLogsList">
+            <!-- Dynamic Log Items Rendered by app.js -->
+        </div>
+
+    </aside>
+
+    <script src="/static/js/app.js?v=6.0"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{
+  "manifest_version": 3,
+  "name": "Aarambh Suite - Inbuilt Workbench Bridge",
+  "version": "1.0.0",
+  "description": "Enables Google Colab, Civitai, and HuggingFace to render seamlessly inside the Aarambh Suite screen.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Aarambh Suite Bridge"
+  },
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback"
+  ],
+  "host_permissions": [
+    "*://colab.research.google.com/*",
+    "*://*.google.com/*",
+    "*://civitai.com/*",
+    "*://huggingface.co/*",
+    "http://127.0.0.1/*",
+    "http://localhost/*"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://127.0.0.1:8501/*",
+        "http://localhost:8501/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}

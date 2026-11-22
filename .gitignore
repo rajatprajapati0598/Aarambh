@@ -1,0 +1,37 @@
+# ==============================================================================
+# Aarambh Security Invariant — Git Ignore
+# STRICTLY IGNORE ALL SECRETS, CREDENTIALS, AND TEMPORARY DATA
+# ==============================================================================
+.secrets/
+*.secret
+*.token
+*.key
+*.pem
+kaggle.json
+.kaggle/
+mcp_config.json
+.env
+.env.*
+
+# Python bytecode & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# Renders & Ephemeral Generation Cache
+studio/static/renders/
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.glb
+*.wav
+
+# Browser Profiles & Local Stores
+.browser_profile/
+*.log
+tmp/
+scratch/

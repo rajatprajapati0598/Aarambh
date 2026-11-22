@@ -864,10 +864,10 @@ function initErrorConsole() {
         });
     }
 
-    // Filter pills
-    document.querySelectorAll(".filter-btn").forEach(btn => {
+    // Filter tabs
+    document.querySelectorAll(".drawer-filter-bar .filter-tab").forEach(btn => {
         btn.addEventListener("click", () => {
-            document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+            document.querySelectorAll(".drawer-filter-bar .filter-tab").forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
             AarambhState.activeLogFilter = btn.getAttribute("data-filter");
             renderLogs();
@@ -948,30 +948,68 @@ function renderLogs() {
     const container = document.getElementById("drawerLogsList");
     if (!container) return;
 
-    const filter = AarambhState.activeLogFilter;
+    const filter = AarambhState.activeLogFilter || "ALL";
     const filteredLogs = AarambhState.logs.filter(l => {
         if (filter === "ALL") return true;
         if (filter === "ERRORS") return l.level === "ERROR" || l.level === "CRITICAL";
-        if (filter === "WARNINGS") return l.level === "WARNING";
-        if (filter === "SYSTEM") return l.section === "System" || l.section === "Core";
+        if (filter === "WARNINGS") return l.level === "WARNING" || l.level === "WARN";
+        if (filter === "SUCCESS") return l.level === "SUCCESS";
+        if (filter === "INFO") return l.level === "INFO";
+        if (filter === "SYSTEM") return l.section === "System" || l.section === "Core" || l.section === "Hardware" || l.section === "MCP Engine" || l.section === "GPU Engine";
         return true;
     });
 
     if (filteredLogs.length === 0) {
-        container.innerHTML = `<div style="text-align: center; color: #94a3b8; padding: 40px 0; font-size: 0.8rem;">No logs found for filter: ${filter}</div>`;
+        container.innerHTML = `<div style="text-align: center; color: #94a3b8; padding: 40px 0; font-size: 0.8rem;">No logs found for filter: ${escapeHtml(filter)}</div>`;
         return;
     }
 
-    container.innerHTML = filteredLogs.slice().reverse().map(l => `
-        <div class="log-item">
-            <div class="log-meta">
-                <span class="log-level ${l.level}">[${l.level}] [${l.section}]</span>
-                <span class="log-time">${l.timestamp}</span>
+    container.innerHTML = filteredLogs.slice().reverse().map(l => {
+        const badgeClass = (l.level === "CRITICAL") ? "ERROR" : (l.level === "WARN" ? "WARNING" : l.level);
+        return `
+        <div class="log-entry-item" data-log-id="${l.id}">
+            <div class="log-entry-header">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="log-level-badge ${badgeClass}">[${escapeHtml(l.level)}]</span>
+                    <span style="font-weight: 700; color: #475569; font-size: 0.68rem;">[${escapeHtml(l.section || "System")}]</span>
+                    <span class="log-timestamp">${escapeHtml(l.timestamp)}</span>
+                </div>
+                <button type="button" class="btn-copy-single-log" data-log-id="${l.id}" title="Copy this specific log entry">
+                    <span>📋 Copy</span>
+                </button>
             </div>
-            <div class="log-msg">${escapeHtml(l.message)}</div>
-            ${l.details ? `<div class="log-details">${escapeHtml(l.details)}</div>` : ''}
+            <div class="log-message">${escapeHtml(l.message)}</div>
+            ${l.details ? `<div class="log-details-block">${escapeHtml(l.details)}</div>` : ''}
         </div>
-    `).join("");
+        `;
+    }).join("");
+
+    // Attach individual copy listeners to every single log entry
+    container.querySelectorAll(".btn-copy-single-log").forEach(copyBtn => {
+        copyBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const logId = parseInt(copyBtn.getAttribute("data-log-id"), 10);
+            const targetLog = AarambhState.logs.find(item => item.id === logId);
+            if (targetLog) {
+                const text = `[${targetLog.timestamp}] [${targetLog.level}] [${targetLog.section || "System"}] ${targetLog.message}${targetLog.details ? "\nDetails: " + targetLog.details : ""}`;
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        const originalHtml = copyBtn.innerHTML;
+                        copyBtn.classList.add("copied");
+                        copyBtn.innerHTML = "<span>✅ Copied!</span>";
+                        setTimeout(() => {
+                            copyBtn.classList.remove("copied");
+                            copyBtn.innerHTML = originalHtml;
+                        }, 1500);
+                    }).catch(() => {
+                        prompt("Copy log entry:", text);
+                    });
+                } else {
+                    prompt("Copy log entry:", text);
+                }
+            }
+        });
+    });
 }
 
 /* =========================================================================

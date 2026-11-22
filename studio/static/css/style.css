@@ -1353,29 +1353,66 @@ body {
 
 /* Filter Bar */
 .drawer-filter-bar {
-  padding: 10px 24px;
+  padding: 8px 16px;
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
   background: #f1f5f9;
   border-bottom: 1px solid #e2e8f0;
 }
 
 .filter-tab {
-  background: none;
-  border: none;
-  padding: 4px 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 5px 11px;
   border-radius: 8px;
   font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 700;
   color: #64748b;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-tab:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #cbd5e1;
 }
 
 .filter-tab.active {
-  background: #ffffff;
-  color: #0f172a;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.2);
+}
+
+.btn-copy-single-log {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-copy-single-log:hover {
+  background: #00d284;
+  color: #ffffff;
+  border-color: #00d284;
+}
+
+.btn-copy-single-log.copied {
+  background: #10b981;
+  color: #ffffff;
+  border-color: #10b981;
 }
 
 /* Log Content Container */

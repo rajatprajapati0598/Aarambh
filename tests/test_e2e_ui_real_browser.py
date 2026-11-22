@@ -6,13 +6,34 @@ import sys
 import time
 from playwright.sync_api import sync_playwright
 
+def launch_resilient_browser(playwright_instance):
+    """Launch headless browser trying Chrome first, then Edge, then default Chromium."""
+    candidates = [
+        ("chrome", "Google Chrome"),
+        ("msedge", "Microsoft Edge"),
+        (None, "Bundled Chromium")
+    ]
+    last_err = None
+    for channel, name in candidates:
+        try:
+            kwargs = {"headless": True}
+            if channel:
+                kwargs["channel"] = channel
+            browser = playwright_instance.chromium.launch(**kwargs)
+            print(f"   [Browser Engine] Successfully connected to: {name}")
+            return browser
+        except Exception as e:
+            last_err = e
+            continue
+    raise RuntimeError(f"Unable to launch any headless browser candidate: {last_err}")
+
 def run_e2e_tests():
-    print("🚀 Launching Headless Edge Browser for Aarambh E2E UI Audit...")
+    print("🚀 Launching Headless Real Browser for Aarambh E2E UI Audit...")
     console_errors = []
     page_errors = []
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True, channel="msedge")
+        browser = launch_resilient_browser(p)
         context = browser.new_context()
         page = context.new_page()
 

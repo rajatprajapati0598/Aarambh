@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-11-22 19:20:00",
+  "total_suites": 4,
+  "passed_suites": 4,
+  "failed_suites": 0,
+  "pass_rate_pct": 100.0,
+  "duration_seconds": 30.303,
+  "suites": [
+    {
+      "suite": "Security & Zero-Leak Audit",
+      "status": "PASS",
+      "duration_seconds": 1.883,
+      "output": "2026-11-22 19:20:02,308 [INFO] aarambh.server: [SUCCESS] [Core] Aarambh Enterprise Gateway initialized with 10 Master Studios & 40 Categories\n2026-11-22 19:20:02,467 [INFO] httpx2: HTTP Request: GET http://testserver/api/mcp/status \"HTTP/1.1 200 OK\"\n...\n----------------------------------------------------------------------\nRan 3 tests in 1.559s\n\nOK\n"
+    },
+    {
+      "suite": "Models Manifest & VRAM Matrix",
+      "status": "PASS",
+      "duration_seconds": 0.22,
+      "output": "\u2705 All Model Manifest Integration Tests Passed Successfully!\n"
+    },
+    {
+      "suite": "Backend Gateway & API Services",
+      "status": "PASS",
+      "duration_seconds": 3.052,
+      "output": "FO] httpx2: HTTP Request: GET http://testserver/static/css/style.css \"HTTP/1.1 200 OK\"\n2026-11-22 19:20:05,646 [INFO] httpx2: HTTP Request: GET http://testserver/static/js/app.js \"HTTP/1.1 200 OK\"\n.2026-11-22 19:20:05,653 [INFO] httpx2: HTTP Request: GET http://testserver/api/tunnel_hud \"HTTP/1.1 200 OK\"\n.2026-11-22 19:20:05,658 [INFO] httpx2: HTTP Request: GET http://testserver/ \"HTTP/1.1 200 OK\"\n.\n----------------------------------------------------------------------\nRan 8 tests in 0.151s\n\nOK\n"
+    },
+    {
+      "suite": "Real-Browser Headless E2E UI Journey",
+      "status": "PASS",
+      "duration_seconds": 25.147,
+      "output": " \u2705 Switched to Colab MCP Bridge in Workbench\n   \u2705 Switched to Hugging Face ZeroGPU MCP in Workbench\n   \u2705 Switched back to Kaggle 2x T4 MCP in Workbench\n\u2139\ufe0f Step 6: Testing Architecture View...\n   \u2705 Switched to Architecture view\n\ud83d\udd0d Step 7: Verifying Zero Console / Page Errors...\n   Total Page Errors: 0\n   Total Console Errors: 1\n   \u26a0\ufe0f Console Errors: ['Failed to load resource: net::ERR_NAME_NOT_RESOLVED']\n\n\ud83c\udf89 100% SUCCESS: All UI Buttons, Studios, Drawers, Filters, and Toggles PASSED with 0 Errors!\n"
+    }
+  ]
+}

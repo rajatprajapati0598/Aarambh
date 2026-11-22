@@ -21,6 +21,10 @@ python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id
 echo '⬇️ Pulling Juggernaut XL v9 (Cinematic)...'
 python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='RunDiffusion/Juggernaut-XL-v9', filename='Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors', local_dir='models/checkpoints')" || true
 
+# Model: SDXL 1.0 (Full Base + Refiner Ensemble) (1.1)
+echo '⬇️ Pulling SDXL 1.0 (Full Base + Refiner Ensemble)...'
+python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='stabilityai/stable-diffusion-xl-base-1.0', filename='sd_xl_base_1.0.safetensors', local_dir='models/checkpoints')" || true
+
 # Model: Kolors 2.7B (Bilingual Photoreal) (1.1)
 echo '⬇️ Pulling Kolors 2.7B (Bilingual Photoreal)...'
 python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='Kwai-Kolors/Kolors', filename='kolors-text-to-image.safetensors', local_dir='models/checkpoints')" || true
@@ -89,6 +93,10 @@ python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id
 echo '⬇️ Pulling F5-TTS (Zero-Shot Voice Clone)...'
 python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='SWivid/F5-TTS', filename='model_1200000.safetensors', local_dir='models/tts')" || true
 
+# Model: Whisper-Large-v3 (Full FP16 Ensemble) (2.2)
+echo '⬇️ Pulling Whisper-Large-v3 (Full FP16 Ensemble)...'
+python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='openai/whisper-large-v3', filename='model.safetensors', local_dir='models/asr')" || true
+
 # Model: Meta MusicGen Large (3.3B Stereo) (2.3)
 echo '⬇️ Pulling Meta MusicGen Large (3.3B Stereo)...'
 python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='facebook/musicgen-large', filename='model.safetensors', local_dir='models/audio')" || true
@@ -109,9 +117,25 @@ python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id
 echo '⬇️ Pulling DeepSeek-R1-Distill-Qwen-14B...'
 python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='deepseek-ai/DeepSeek-R1-Distill-Qwen-14B-GGUF', filename='DeepSeek-R1-Distill-Qwen-14B-Q4_K_M.gguf', local_dir='models/llm')" || true
 
+# Model: Mixtral 8x7B Instruct (47B MoE / Q4_K_M) (3.1)
+echo '⬇️ Pulling Mixtral 8x7B Instruct (47B MoE / Q4_K_M)...'
+python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='TheBloke/Mixtral-8x7B-Instruct-v0.1-GGUF', filename='mixtral-8x7b-instruct-v0.1.Q4_K_M.gguf', local_dir='models/llm')" || true
+
+# Model: Qwen 2.5 (14B Instruct FP16) (3.2)
+echo '⬇️ Pulling Qwen 2.5 (14B Instruct FP16)...'
+python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='Qwen/Qwen2.5-14B-Instruct', filename='model.safetensors', local_dir='models/llm')" || true
+
 # Model: Qwen 2.5 (32B Instruct AWQ / 128k) (3.2)
 echo '⬇️ Pulling Qwen 2.5 (32B Instruct AWQ / 128k)...'
 python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='Qwen/Qwen2.5-32B-Instruct-AWQ', filename='model.safetensors', local_dir='models/llm')" || true
+
+# Model: Meta Llama 3.3 70B Instruct (IQ2_XXS / Dual-T4 Split) (3.2)
+echo '⬇️ Pulling Meta Llama 3.3 70B Instruct (IQ2_XXS / Dual-T4 Split)...'
+python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='bartowski/Llama-3.3-70B-Instruct-GGUF', filename='Llama-3.3-70B-Instruct-IQ2_XXS.gguf', local_dir='models/llm')" || true
+
+# Model: Qwen 2.5 72B Instruct (IQ3_M / Dual-T4 + RAM) (3.2)
+echo '⬇️ Pulling Qwen 2.5 72B Instruct (IQ3_M / Dual-T4 + RAM)...'
+python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='Qwen/Qwen2.5-72B-Instruct-GGUF', filename='qwen2.5-72b-instruct-q3_k_m.gguf', local_dir='models/llm')" || true
 
 # Model: BGE-M3 (Dense + Sparse + ColBERT 8k) (3.3)
 echo '⬇️ Pulling BGE-M3 (Dense + Sparse + ColBERT 8k)...'

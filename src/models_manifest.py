@@ -59,6 +59,18 @@ MODELS_MANIFEST: Dict[str, Dict[str, Any]] = {
         "preferred_engine": "kaggle",
         "task": "text-to-image"
     },
+    "sdxl_base_refiner": {
+        "studio_id": 1,
+        "category_id": "1.1",
+        "name": "SDXL 1.0 (Full Base + Refiner Ensemble)",
+        "hf_repo_id": "stabilityai/stable-diffusion-xl-base-1.0",
+        "file_name": "sd_xl_base_1.0.safetensors",
+        "target_dir": "models/checkpoints",
+        "vram_required_gb": 16.0,
+        "tier": "kaggle_ultra",
+        "preferred_engine": "kaggle",
+        "task": "text-to-image"
+    },
     "kolors_2_7b": {
         "studio_id": 1,
         "category_id": "1.1",
@@ -284,6 +296,18 @@ MODELS_MANIFEST: Dict[str, Dict[str, Any]] = {
         "preferred_engine": "huggingface",
         "task": "speech-to-text"
     },
+    "whisper_large_v3_fp16": {
+        "studio_id": 2,
+        "category_id": "2.2",
+        "name": "Whisper-Large-v3 (Full FP16 Ensemble)",
+        "hf_repo_id": "openai/whisper-large-v3",
+        "file_name": "model.safetensors",
+        "target_dir": "models/asr",
+        "vram_required_gb": 10.0,
+        "tier": "kaggle_ultra",
+        "preferred_engine": "kaggle",
+        "task": "speech-to-text"
+    },
     "musicgen_large": {
         "studio_id": 2,
         "category_id": "2.3",
@@ -348,6 +372,30 @@ MODELS_MANIFEST: Dict[str, Dict[str, Any]] = {
         "preferred_engine": "kaggle",
         "task": "deep-reasoning"
     },
+    "mixtral_8x7b_gguf": {
+        "studio_id": 3,
+        "category_id": "3.1",
+        "name": "Mixtral 8x7B Instruct (47B MoE / Q4_K_M)",
+        "hf_repo_id": "TheBloke/Mixtral-8x7B-Instruct-v0.1-GGUF",
+        "file_name": "mixtral-8x7b-instruct-v0.1.Q4_K_M.gguf",
+        "target_dir": "models/llm",
+        "vram_required_gb": 26.0,
+        "tier": "kaggle_ultra",
+        "preferred_engine": "kaggle",
+        "task": "deep-reasoning"
+    },
+    "qwen_2_5_14b_instruct": {
+        "studio_id": 3,
+        "category_id": "3.2",
+        "name": "Qwen 2.5 (14B Instruct FP16)",
+        "hf_repo_id": "Qwen/Qwen2.5-14B-Instruct",
+        "file_name": "model.safetensors",
+        "target_dir": "models/llm",
+        "vram_required_gb": 16.0,
+        "tier": "kaggle_ultra",
+        "preferred_engine": "kaggle",
+        "task": "long-synthesis"
+    },
     "qwen_2_5_32b_instruct": {
         "studio_id": 3,
         "category_id": "3.2",
@@ -356,6 +404,30 @@ MODELS_MANIFEST: Dict[str, Dict[str, Any]] = {
         "file_name": "model.safetensors",
         "target_dir": "models/llm",
         "vram_required_gb": 20.0,
+        "tier": "kaggle_ultra",
+        "preferred_engine": "kaggle",
+        "task": "long-synthesis"
+    },
+    "llama_3_3_70b_gguf": {
+        "studio_id": 3,
+        "category_id": "3.2",
+        "name": "Meta Llama 3.3 70B Instruct (IQ2_XXS / Dual-T4 Split)",
+        "hf_repo_id": "bartowski/Llama-3.3-70B-Instruct-GGUF",
+        "file_name": "Llama-3.3-70B-Instruct-IQ2_XXS.gguf",
+        "target_dir": "models/llm",
+        "vram_required_gb": 24.0,
+        "tier": "kaggle_ultra",
+        "preferred_engine": "kaggle",
+        "task": "long-synthesis"
+    },
+    "qwen_2_5_72b_gguf": {
+        "studio_id": 3,
+        "category_id": "3.2",
+        "name": "Qwen 2.5 72B Instruct (IQ3_M / Dual-T4 + RAM)",
+        "hf_repo_id": "Qwen/Qwen2.5-72B-Instruct-GGUF",
+        "file_name": "qwen2.5-72b-instruct-q3_k_m.gguf",
+        "target_dir": "models/llm",
+        "vram_required_gb": 28.0,
         "tier": "kaggle_ultra",
         "preferred_engine": "kaggle",
         "task": "long-synthesis"
